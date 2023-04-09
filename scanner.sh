@@ -19,12 +19,14 @@ if [[ -z "$ip" ]]; then
   exit 1
 fi
 
+
+# Check if -p is empty
 if [[ -z "$ports" ]]; then
   echo "Please specify a port range with the -p option" >&2
   exit 1
 fi
 
-# Scan ports and display open ports
-for port in $(seq 1 "$ports"); do
-  nc -z -w1 "$ip" "$port" >/dev/null 2>&1 && echo "$ip:$port açık"
+#Scans ports and displays open/closed ports
+for i in $(seq $(echo $ports | tr '-' ' ') ); do
+    (echo > /dev/tcp/$ip/$i) >/dev/null 2>&1 && echo "$ip:$i is open" || echo "$ip:$i is closed";
 done
