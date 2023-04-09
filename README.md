@@ -18,6 +18,6 @@ This bash script scans for a specified port range on a specified IP address and 
 
 `-i, --ip: IP address to scan`
 
-`-p, --ports: Range of ports to scan (For example, "1-1024")`
+`-p, --ports: Range of ports to scan (For example, "80")`
 
   
